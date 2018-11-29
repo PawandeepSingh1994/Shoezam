@@ -22,7 +22,7 @@ import com.revature.services.ShoeService;
 
 //@RestController
 @Controller
-@CrossOrigin
+@CrossOrigin(origins="*", allowedHeaders="*")
 @RequestMapping("shoes")
 public class ShoeControler {
 	

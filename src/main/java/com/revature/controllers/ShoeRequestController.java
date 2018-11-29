@@ -17,7 +17,7 @@ import com.revature.beans.ShoeRequest;
 import com.revature.services.ShoeRequestService;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins="*", allowedHeaders="*")
 @RequestMapping("/swaps")
 public class ShoeRequestController {
 	

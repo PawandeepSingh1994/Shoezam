@@ -17,7 +17,7 @@ import com.revature.beans.Client;
 import com.revature.services.ClientService;
 
 @Controller
-@CrossOrigin
+@CrossOrigin(origins="*", allowedHeaders="*")
 public class ClientController {
 	
 	@Autowired
