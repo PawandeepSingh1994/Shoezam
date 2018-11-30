@@ -114,16 +114,17 @@ public class ShoeDaoImp implements ShoeDao {
 	}
 
 	@Override
-	public void add(Shoe shoe) {
+	public Integer add(Shoe shoe) {
 		shoe.setColor(shoe.getColor().toUpperCase());
 		shoe.setBrand(shoe.getBrand().toUpperCase());
 		
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
 		System.out.println("shoe to add at dao layer? " + shoe);
-		s.save(shoe);
+		Integer id = (Integer) s.save(shoe);
 		tx.commit();
 		s.close();
+		return id;
 	}
 
 	@Override

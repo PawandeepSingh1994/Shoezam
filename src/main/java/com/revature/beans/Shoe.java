@@ -13,6 +13,7 @@ import javax.persistence.SequenceGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 @Scope(value="prototype")
@@ -43,8 +44,28 @@ public class Shoe {
 	private String color;
 	@Column
 	private Integer shoeStatus;
+	@Column
+	private MultipartFile uploadedFile;
+	@Column
+	private String imageUrl;
 	
 	
+	public MultipartFile getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(MultipartFile uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	/** Constructor for returning failed queries*/
 	
 	public Shoe() {
@@ -53,7 +74,7 @@ public class Shoe {
 	
 	/** Constructor for adding a new shoe from client side*/
 	
-	public Shoe(Client client, String title, String brand, Double size, Double price, String color, Integer shoeStatus) {
+	public Shoe(Client client, String title, String brand, Double size, Double price, String color, Integer shoeStatus, MultipartFile file) {
 		super();
 		this.title 	= title;
 		this.client	= client;
@@ -62,6 +83,8 @@ public class Shoe {
 		this.price	= price;
 		this.color	= color;
 		this.shoeStatus = shoeStatus;
+		this.uploadedFile = file;
+		this.imageUrl = null;
 	}
 	/** Constructor for fetching a shoe by id*/
 		
@@ -71,7 +94,7 @@ public class Shoe {
 	}
 	
 	/** Constructor for making bean from database query*/
-	public Shoe(Integer shoeid, Client client, String title, String brand, Double size, Double price, String color, Integer shoeStatus) {
+	public Shoe(Integer shoeid, Client client, String title, String brand, Double size, Double price, String color, Integer shoeStatus, String imageUrl) {
 		super();
 		this.id	= shoeid;
 		this.client	= client;
@@ -81,6 +104,8 @@ public class Shoe {
 		this.price	= price;
 		this.color	= color;
 		this.shoeStatus = shoeStatus;
+		this.imageUrl = imageUrl;
+		this.uploadedFile = null;
 	}
 	
 
@@ -201,7 +226,10 @@ public class Shoe {
 	@Override
 	public String toString() {
 		return "Shoe [id=" + id + ", client=" + client + ", title=" + title + ", brand=" + brand + ", shoeSize="
-				+ shoeSize + ", price=" + price + ", color=" + color + ", shoeStatus=" + shoeStatus + "]";
+				+ shoeSize + ", price=" + price + ", color=" + color + ", shoeStatus=" + shoeStatus + ", uploadedFile="
+				+ uploadedFile + ", imageUrl=" + imageUrl + "]";
 	}
+
+	
 
 }

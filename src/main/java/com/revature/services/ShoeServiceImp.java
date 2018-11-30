@@ -12,6 +12,12 @@ import com.revature.daos.ShoeDaoImp;
 @Service
 public class ShoeServiceImp implements ShoeService {
 	
+	private AmazonClient amazonClient;
+
+	ShoeServiceImp(AmazonClient amazonClient) {
+		this.amazonClient = amazonClient;
+	}
+	
 	@Autowired
 	ShoeDaoImp shoeDaoImp;
 	
@@ -50,8 +56,12 @@ public class ShoeServiceImp implements ShoeService {
 	
 	@Override
 	public Shoe addShoe(Shoe shoe) {
-		shoeDaoImp.add(shoe);
-		return shoe;
+		Integer id = shoeDaoImp.add(shoe);
+		String imageUrl = amazonClient.uploadFile(shoe.getUploadedFile(), id);
+		shoe.setImageUrl(imageUrl);
+		shoeDaoImp.update(shoe);
+		Shoe nShoe = shoeDaoImp.getOneShoe(shoe);
+		return nShoe;
 	}
 	
 	@Override

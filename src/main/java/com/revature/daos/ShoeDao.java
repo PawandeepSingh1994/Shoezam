@@ -19,6 +19,6 @@ public interface ShoeDao {
 	public List<Shoe> getShoesForSale(Client client);
 	public void update(Shoe shoe);
 	public void remove(Shoe shoe);
-	public void add(Shoe shoe);
+	public Integer add(Shoe shoe);
 
 }

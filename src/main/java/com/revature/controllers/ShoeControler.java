@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.revature.beans.Client;
 import com.revature.beans.Shoe;
+import com.revature.services.AmazonClient;
 import com.revature.services.ShoeService;
 
 //@RestController
@@ -26,7 +27,7 @@ import com.revature.services.ShoeService;
 @CrossOrigin(origins="*", allowedHeaders="*")
 @RequestMapping("shoes")
 public class ShoeControler {
-	
+
 	@Autowired
 	ShoeService shoeService;
 
@@ -40,73 +41,67 @@ public class ShoeControler {
 		List<Shoe> allShoes = shoeService.fetchAllShoes();
 		return allShoes;
 	}
-	
+
 	@GetMapping("/color/{whichColor}")
 	@ResponseBody
 	public List<Shoe> getShoesByColor(@PathVariable("whichColor") String color) {
 		List<Shoe> coloredShoes = shoeService.fetchShoesByColor(color);
 		return coloredShoes;
 	}
-	
+
 	@GetMapping("/brand/{whichBrand}")
 	@ResponseBody
 	public List<Shoe> getShoesByBrand(@PathVariable("whichBrand") String brand) {
 		List<Shoe> brandShoes = shoeService.fetchShoesByBrand(brand);
 		return brandShoes;
 	}
-	
+
 //	@GetMapping("/size/{whichSize}")
 //	@ResponseBody
 //	public List<Shoe> getShoesBySize(@PathVariable("whichSize") Double size) {
 //		List<Shoe> shoesOfSize = shoeService.fetchShoesBySize(size);
 //		return shoesOfSize;
 //	}
-	
+
 	@GetMapping("/size/{min}/{max}")
 	@ResponseBody
 	public List<Shoe> getShoesInSizeRange(@PathVariable("min") Double min, @PathVariable("max") Double max) {
 		List<Shoe> shoesInRange = shoeService.fetchShoesBySizeRange(min, max);
 		return shoesInRange;
 	}
-	
+
 	@GetMapping("/price/{min}/{max}")
 	@ResponseBody
 	public List<Shoe> getShoesInPriceRange(@PathVariable("min") Double min, @PathVariable("max") Double max) {
 		List<Shoe> shoesInRange = shoeService.fetchShoesByPriceRange(min, max);
 		return shoesInRange;
 	}
-	
+
 //	@GetMapping("/{shoeId}")
 //	@ResponseBody
 //	public Shoe getOneShoeById(@PathVariable("shoeId") Integer id) {
 //		Shoe found = shoeService.fetchOneShoe(id);
 //		return found;
 //	}
-	
-	@PostMapping(consumes=MediaType.APPLICATION_JSON_VALUE)
+
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public String addNewShoe(@RequestBody Shoe shoe) {
 		System.out.println("Shoe in post request: " + shoe);
-//		Client client, String title, String brand, Double size, Double price, String color, Integer shoeStatus
-		Shoe toPost = new Shoe(
-				shoe.getClient(), 
-				shoe.getTitle(), 
-				shoe.getBrand(), 
-				shoe.getShoeSize(), 
-				shoe.getPrice(), 
-				shoe.getColor(), 
-				shoe.getShoeStatus());
+		Shoe toPost = new Shoe(shoe.getClient(), shoe.getTitle(), shoe.getBrand(), shoe.getShoeSize(), shoe.getPrice(),
+				shoe.getColor(), shoe.getShoeStatus(), shoe.getUploadedFile());
 		shoeService.addShoe(toPost);
 		String response = "Shoe added.";
 		return response;
 	}
-	
+
 	@GetMapping("/client/{id}")
 	@ResponseBody
 	public List<Shoe> getShoesForClient(@PathVariable("id") Integer id) {
 		Client c = new Client(id);
 		List<Shoe> shoesOfClient = shoeService.fetchShoesBelongingToClient(c);
 		return shoesOfClient;
+
 	}
 	
 	@GetMapping("sale/client/{id}")
@@ -125,6 +120,5 @@ public class ShoeControler {
 		shoeService.removeShoe(s);
 		return s;
 	}
-	
 	
 }
