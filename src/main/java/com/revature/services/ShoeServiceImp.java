@@ -12,11 +12,6 @@ import com.revature.daos.ShoeDaoImp;
 @Service
 public class ShoeServiceImp implements ShoeService {
 	
-	private AmazonClient amazonClient;
-
-	ShoeServiceImp(AmazonClient amazonClient) {
-		this.amazonClient = amazonClient;
-	}
 	
 	@Autowired
 	ShoeDaoImp shoeDaoImp;
