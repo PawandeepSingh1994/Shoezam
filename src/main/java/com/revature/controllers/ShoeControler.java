@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -116,9 +117,13 @@ public class ShoeControler {
 		return shoesOfClient;
 	}
 	
-	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public void deleteShoe(@PathVariable("id") Integer id) {
-		shoeService.removeShoe(new Shoe(id));
+	@GetMapping(value="/remove/{id}")
+	@ResponseBody
+	public Shoe deleteShoe(@PathVariable("id") Integer id) {
+		Shoe s = new Shoe(id);
+		s.setShoeStatus(1);
+		shoeService.removeShoe(s);
+		return s;
 	}
 	
 	

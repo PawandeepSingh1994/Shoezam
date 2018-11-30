@@ -65,7 +65,7 @@ public class ShoeServiceImp implements ShoeService {
 	
 	@Override
 	public Shoe removeShoe(Shoe shoe) {
-		shoeDaoImp.remove(shoe);
+		shoeDaoImp.update(shoe);
 		return shoe;
 	}
 	

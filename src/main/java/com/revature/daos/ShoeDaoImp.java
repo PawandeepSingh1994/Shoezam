@@ -95,7 +95,10 @@ public class ShoeDaoImp implements ShoeDao {
 	public void update(Shoe shoe) {
 		Session s = HibernateUtil.getSession();
 		Transaction tx = s.beginTransaction();
-		s.update(shoe);
+		Shoe temp = getOneShoe(shoe);
+		temp.setShoeStatus(1);
+		System.out.println("UPDATED---------------------------------------------UPDATED");
+		s.update(temp);
 		tx.commit();
 		s.close();
 		
