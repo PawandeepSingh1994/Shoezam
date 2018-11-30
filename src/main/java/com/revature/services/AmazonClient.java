@@ -25,10 +25,10 @@ public class AmazonClient {
 	private AmazonS3 s3Client;
 	private ShoeDaoImp shoeDaoImp;
 	
-	private String endpointUrl = System.getenv("S3_URL");
-	private String bucketName = System.getenv("S3_BUCKET");
-	private String accessKey = System.getenv("IAM_ACCESSKEY");
-	private String secretKey = System.getenv("IAM_SECRETKEY");
+	private String endpointUrl = "shoezam";
+	private String bucketName = "https://s3.us-east-2.amazonaws.com";
+	private String accessKey = "AKIAIP3L7I4QLMVMGEEA";
+	private String secretKey = "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";
 	
 	@SuppressWarnings("deprecation")
 	@PostConstruct

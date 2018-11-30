@@ -11,7 +11,7 @@
 	
 	<!-- enable MVC annotations -->
 	 <mvc:annotation-driven></mvc:annotation-driven> 
-		
+	 
 		
 	<!-- setting up a location for static resource retrieval -->
 	<!-- <mvc:resources location="/WEB-INF/static/" mapping="/static/**"></mvc:resources> -->	
@@ -24,6 +24,6 @@
 		<!-- <property name="suffix">
 			<value>.html</value>
 		</property> 
-	</bean>	-->
+	</bean>	--> 
 		
 </beans>

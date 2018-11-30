@@ -32,6 +32,26 @@ public class ClientController {
 		return allTheClients;
 	}
 	
+	@GetMapping("/s3_credentials")
+//	@RequestMapping(value="/clients", method=RequestMethod.GET)
+	@ResponseBody
+	public Client getcredentials() {
+		System.out.println("Hit Client Controller...");
+		Client result = new Client();
+		result.setId(0);
+		result.setFirstName("AKIAIP3L7I4QLMVMGEEA");
+		result.setLastName("nLcz1INQ/aYmGLE/ixDWijtGFXFY5VuAabGFUbgB");
+		result.setEmail("http://shoezam.s3.amazonaws.com");
+		result.setPass("shoezam");
+		result.setAddress(null);
+		result.setCountry(null);
+		result.setPostalCode(null);
+		result.setPhoneNumber(null);
+		result.setIsAdmin(false);
+		result.setIsBlocked(false);
+		return result;
+	}
+	
 	@RequestMapping(value="/clients/login", method=RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
 	public Object getClientViaLogin(@RequestBody Client client) {

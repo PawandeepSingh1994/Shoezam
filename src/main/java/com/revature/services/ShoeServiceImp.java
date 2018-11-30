@@ -57,10 +57,10 @@ public class ShoeServiceImp implements ShoeService {
 	@Override
 	public Shoe addShoe(Shoe shoe) {
 		Integer id = shoeDaoImp.add(shoe);
-		String imageUrl = amazonClient.uploadFile(shoe.getUploadedFile(), id);
-		shoe.setImageUrl(imageUrl);
-		shoeDaoImp.update(shoe);
-		Shoe nShoe = shoeDaoImp.getOneShoe(shoe);
+		//String imageUrl = amazonClient.uploadFile(shoe.getUploadedFile(), id);
+		//shoe.setImageUrl(imageUrl);
+		//shoeDaoImp.update(shoe);
+		Shoe nShoe = shoeDaoImp.getOneShoe(new Shoe(id));
 		return nShoe;
 	}
 	

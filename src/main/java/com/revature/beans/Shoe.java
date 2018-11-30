@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Transient;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -44,7 +45,7 @@ public class Shoe {
 	private String color;
 	@Column
 	private Integer shoeStatus;
-	@Column
+	@Transient
 	private MultipartFile uploadedFile;
 	@Column
 	private String imageUrl;

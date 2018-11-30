@@ -41,9 +41,9 @@ public class ClientService {
 		System.out.println("Client object we want to send to the db, from Client Service-----> " + client);
 		int result = clientDao.create(client);
 		if (result > 0) {
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 	
 	public Client editClient(Client client) {

@@ -93,6 +93,7 @@ public class ClientDaoImp implements ClientDao {
 								.setParameter("email", client.getEmail())
 								.setParameter("pass", client.getPass());
 		Client c = (Client) q.getSingleResult();
+		s.close();
 		System.out.println(c.toString());
 		return c;
 //		Client c = s.get(Client.class, client.getEmail());

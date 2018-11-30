@@ -86,13 +86,14 @@ public class ShoeControler {
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public String addNewShoe(@RequestBody Shoe shoe) {
+	public Shoe addNewShoe(@RequestBody Shoe shoe) {
 		System.out.println("Shoe in post request: " + shoe);
+		
 		Shoe toPost = new Shoe(shoe.getClient(), shoe.getTitle(), shoe.getBrand(), shoe.getShoeSize(), shoe.getPrice(),
 				shoe.getColor(), shoe.getShoeStatus(), shoe.getUploadedFile());
-		shoeService.addShoe(toPost);
-		String response = "Shoe added.";
-		return response;
+		
+		Shoe result = shoeService.addShoe(toPost);
+		return result;
 	}
 
 	@GetMapping("/client/{id}")
