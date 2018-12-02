@@ -6,9 +6,9 @@
 <hibernate-configuration>
 
 	<session-factory>
-		<property name="hibernate.connection.url">jdbc:oracle:thin:@revature.cvmfh0fqyy8w.us-east-2.rds.amazonaws.com:1521:ORCL</property>
-		<property name="hibernate.connection.username">project_2</property>
-		<property name="hibernate.connection.password">pass</property>
+		<property name="hibernate.connection.url">Your database credentials</property>
+		<property name="hibernate.connection.username">email</property>
+		<property name="hibernate.connection.password">password</property>
 		
 		<property name ="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
 		<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
