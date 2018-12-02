@@ -1,0 +1,27 @@
+<div class="sidenav">
+    <a [routerLink]="['/inventoryPage']">Shoes By Me</a>
+    <a [routerLink]="['/addShoe']">Add Shoe</a>
+  </div>
+  
+  <div class="main" id="shoePageBody">
+  <div class="container">
+      <h2>All Shoes</h2>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let shoe of Shoes">
+          <div>
+            <img src="https://s3.us-east-2.amazonaws.com/shoezam/shoe-id-{{shoe.id}}" class="img-rounded" alt="image" width="150" height="150">
+            <span class="shoeTitle">Name: <b>{{shoe.brand+" "}}</b>{{shoe.title}}</span>
+            <span class="shoeSize">Size: <b>{{shoe.shoeSize+" "}}</b>Color: <b>{{shoe.color+" "}}</b> Price: <b>{{shoe.price}}</b></span>
+        
+            <span class="userNameList">User: <b>{{shoe.client.firstName}}</b></span>
+          <button id="deleteButton" class="btn btn-outline-danger my-2 my-sm-0 requestButton" type="button" (click)="removeListing(shoe.id)">Remove Listing</button>
+        </div>
+      </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+

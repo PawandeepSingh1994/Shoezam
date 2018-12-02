@@ -1,0 +1,19 @@
+<!-- <app-navigation-component-manager></app-navigation-component-manager> -->
+<div class="sidenav">
+  <a [routerLink]="['/removeShoes']">All Shoes</a>
+</div>
+
+<div class="main" id="shoePageBody">
+<div class="container">
+    <h2>All Shoes</h2>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let shoe of Shoes">
+          <img src={{shoe.imageURL}} class="img-rounded" alt="Cinque Terre" width="150" height="150">
+          <span class="listItem">Name: {{shoe.shoeName}}</span>
+          <span class="shoeSize">Size: {{shoe.size}}</span>
+          <span class="userNameList">User: {{shoe.ownerName}}</span>
+          <button class="btn btn-outline-danger my-2 my-sm-0 requestButton" type="submit">Remove Listing</button>
+        </li>  
+    </ul>
+  </div>
+</div>

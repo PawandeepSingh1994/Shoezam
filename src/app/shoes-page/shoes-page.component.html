@@ -1,0 +1,74 @@
+  
+  <div id="shoePageBody">
+  <div class="container">
+        <form id="searchInput" class="form-inline my-2 my-lg-0">
+            <div class="form-group" style="padding-right: 20px">
+                <select #search class="form-control" id="searchType" name="type" style="color: black" required>
+                <option selected>Search by..</option>
+                <option value="All">View All</option>
+                <option value="Brand">Brand</option>
+                <option value="Color">Color</option>
+                <option value="Size">Size</option>
+                <option value="Price">Price</option>
+                </select>
+              
+               </div>
+          <input #inputValue class="form-control mr-sm-2" type="search" placeholder="Search by Brand, Color" aria-label="Search">
+          <input #min id="minVal" class="form-control mr-sm-2" type="number" placeholder="Min" aria-label="Search">
+          <input #max id="maxVal" class="form-control mr-sm-2" type="number" placeholder="Max" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="searchForShoes(search.value, inputValue.value, min.value, max.value)">Search</button>
+        </form>
+      <h2>All Shoes</h2>
+      <code><ul class="list-group">
+        <li class="list-group-item" *ngFor="let shoe of Shoes">
+            <div>
+                <img src="https://s3.us-east-2.amazonaws.com/shoezam/shoe-id-{{shoe.id}}" class="img-rounded" alt="image" width="150" height="150">
+                <span class="shoeTitle">Name: <b>{{shoe.brand+" "}}</b>{{shoe.title}}</span>
+                <span class="shoeSize">Size: <b>{{shoe.shoeSize+" "}}</b>Color: <b>{{shoe.color+" "}}</b> Price: <b>{{shoe.price}}</b></span>
+                <span class="userNameList">User: <b>{{shoe.client.firstName}}</b></span>
+
+                <div *ngIf="isUser">
+                    <button id="swapRequestButton" class="btn btn-outline-danger my-2 my-sm-0 requestButton" type="button" data-toggle="modal" data-target="#chooseShoeModal" (click)="setRequestInfo(shoe)">Request Swap</button>
+                </div>
+
+                <div *ngIf="isManager">
+                <button id="swapRequestButton" class="btn btn-outline-danger my-2 my-sm-0 requestButton" type="button" (click)="removeListing(shoe)">Remove Listing</button>
+                </div>
+            </div>
+        </li>
+      </ul></code>
+    </div>
+  </div>
+
+  <section>
+      <div class="modal fade" id="chooseShoeModal"  role="dialog" >
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <div class="modal-header" style="padding-left: 150px;">
+                     <h5 class="modal-title" id="exampleModalLongTitle" >Choose Shoe for SWAP</h5>
+                  </div>
+                  <div class="modal-body">
+                  <p id="noResultsFound" style="color:red;"></p>
+                      <div id="userData" class="jumbotron" style="padding-bottom: 1px;padding-top: 1px;">
+                      <h4 style="padding-left: 150px; color: rgb(64, 53, 111)">Your Shoes</h4>
+                      <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let shoe of shoesForThisUser">
+                            <div *ngIf="shoe.status != 1">
+                            <span class="shoeTitle">Shoe: <b>{{shoe.brand+" "}}</b>{{shoe.title}}</span>
+                            <button id="swapRequestButton" class="btn btn-outline-danger my-2 my-sm-0 requestButton" type="button" (click)="setShoeToTrade(shoe, message.value)">Choose</button>
+                            </div>
+                        </li>
+                      </ul>
+                      </div>
+                      <div class="form-group">
+                        <label for="info">Message: </label>
+                        <input #message type="text" class="form-control" name="fName" placeholder="Custom Message for Swapper" required>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                      <button id="userSearchClose" type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button><br>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>

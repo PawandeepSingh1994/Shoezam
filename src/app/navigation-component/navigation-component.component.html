@@ -1,0 +1,121 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="#"><img src="../../assets/logo1.jpg" alt="Smiley face" style="height: 40px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/home']">Home </a>
+        </li>
+
+        
+            <div *ngIf="!isUserManager">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/shoesPage']">Shoes</a>
+              </li>
+            </div>
+        
+        
+        <div *ngIf="isUserLoggedIn">
+          <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/showProfile']">Profile</a>
+          </li>
+        </div>
+
+        <div *ngIf="isUserLoggedIn">
+          <div *ngIf="isUserManager">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/shoesPage']">Remove Shoes</a>
+            </li>
+          </div>
+        </div>
+
+        <div *ngIf="isUserLoggedIn">
+          <div *ngIf="isUserUser">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/requestsSent']">Swap Requests</a>
+            </li>
+          </div>
+        </div>
+
+        <div *ngIf="isUserLoggedIn">
+          <div *ngIf="isUserManager">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/allUsers']">Users</a>
+            </li>
+          </div>
+        </div>
+
+        <div *ngIf="isUserLoggedIn">
+          <div *ngIf="isUserUser">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/inventoryPage']">My Shoes</a>
+            </li>
+          </div>
+        </div>
+
+        <div *ngIf="!isUserLoggedIn">
+          <li class="nav-item">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Login</a>
+          </li>
+        </div>
+
+        <div *ngIf="isUserLoggedIn">
+          <li class="nav-item">
+              <a class="nav-link" href="" data-toggle="modal" data-target="#" (click)="logout()">Logout</a>
+          </li>
+        </div>
+
+        <div *ngIf="!isUserLoggedIn">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/signup']">Sign Up</a>
+          </li>
+        </div>
+        <div>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/locations']">Dropoff Locations</a>
+          </li>
+        </div>
+    </ul>
+    </div>
+  </nav>
+
+  <section>
+    <div class="modal fade" id="loginModal"  role="dialog" >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle" style="padding-left: 200px;">Login</h5>
+            
+            </div>
+            <form>
+            <div class="modal-body" style="height: 280px;">
+                    <div id="userData" class="jumbotron" style="padding-bottom: 1px;padding-top: 1px;" >
+                    <div class="form-group"><br>
+                    <label for="username">Username/E-Mail: </label>
+                    <input #email type="text" class="form-control" id="username" placeholder="Enter Username/E-Mail" required />
+                    <p id="" style="color: red;"></p>
+                    <br>
+
+                    <label for="password">Password: </label>
+                    <input #password type="password" class="form-control" id="password" placeholder="Enter Password" required /><br>
+
+                    
+                    </div>
+                    
+                    </div>
+            </div> 
+            <div class="modal-footer">
+            <button id="closePassModal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="updateUserPasswordInfo" type="button" class="btn btn-outline-primary" (click)="login(email.value, password.value)">Login</button>
+            </div>  
+            </form>
+            </div>
+            </div>
+    </div>
+    </section>
+    
+    

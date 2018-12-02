@@ -1,0 +1,53 @@
+<form>
+  <div id="signUp" style="height: 750px;">
+        <h3 style="text-align: center;">User Sign-Up</h3>
+        <div id="addUser" class="jumbotron" style="padding-bottom: 1px;padding-top: 1px;">
+        <div class="form-group"><br>
+        
+        <div class="form-group">
+          <label for="newFirstname">Firstname: </label>
+          <input #userFname type="text" class="form-control" name="fName" placeholder="Enter Firstname" required>
+        </div>
+
+        <div class="form-group">
+          <label for="newUsername">Lastname: </label>
+          <input #userLname type="text" class="form-control" name="lName" placeholder="Enter Lastname" required>
+        </div>
+
+        <div class="form-group">
+          <label for="newEmail">E-Mail/Username: </label>
+          <input #userEmail type="text" class="form-control" name="emailAddress" placeholder="Enter Email Address/Username" required>
+          <p id = "emailAlreadyExistsNew" style="color: red;"></p>
+        </div>
+        
+        <div class="form-group">
+          <label for="newTempPassword">Password: </label>
+          <input #userPass type="password" class="form-control" name="userPh" placeholder="Enter Password" required>
+        </div>
+
+        <div class="form-group">
+            <label for="userAddress">Street Address: </label>
+            <input #userAddress type="text" class="form-control" name="uAddress" placeholder="Enter Full Address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="userPostal">Postal Code: </label>
+            <input #userZipcode type="text" class="form-control" name="uAddress" placeholder="Enter Full Address" required>
+        </div>
+
+        <div class="form-group">
+            <label for="userCountry">Country </label>
+            <input #userCountry type="text" class="form-control" name="uAddress" placeholder="Enter Full Address" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="newPhoneNumber">Phone Number: </label>
+          <input #userPhone type="text" class="form-control" name="userPh" id="newUserPhone" placeholder="Enter Phone Number" required>
+        </div>
+        </div>
+        
+        </div>
+    
+      <button id="addNewUserButton" type="button" class="btn btn-outline-primary" (click)="userSignUp(userFname.value, userLname.value, userEmail.value, userPass.value, userAddress.value, userZipcode.value, userCountry.value, userPhone.value)">Submit</button>
+    </div> 
+  </form>

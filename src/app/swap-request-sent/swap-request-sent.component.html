@@ -1,0 +1,24 @@
+<div class="sidenav">
+    <a [routerLink]="['/requestsSent']">Requests Sent</a>
+    <a [routerLink]="['/requestsRecieved']">Requests Recieved</a>
+  </div>
+  
+  <div class="main" id="shoePageBody">
+  <div class="container">
+      <h2>Swapping Requests Sent</h2>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let request of requests">
+            <img src="https://s3.us-east-2.amazonaws.com/shoezam/shoe-id-{{request.shoe_requested.id}}" class="img-rounded" alt="Cinque Terre" width="150" height="150">
+            <span class="listItem">Requested From: <b>{{request.client_owner.firstName}}</b></span>
+            <span class="shoeSize">Shoe Requested: <b>{{request.shoe_requested.brand + " " + request.shoe_requested.title}}</b></span><br>
+            <span class="shoeSize">Size: <b>{{request.shoe_to_trade.shoeSize+" "}}</b>Color: <b>{{request.shoe_to_trade.color+" "}}</b> Price: <b>{{request.shoe_to_trade.price}}</b></span><br>
+            <span class="userNameList">Shoe Offered: <b>{{request.shoe_to_trade.brand + " " + request.shoe_to_trade.title}}</b></span><br>
+            <span class="listItem" *ngIf="request.status == null">Request Status: <b>Pending</b></span>
+            <span class="listItem" *ngIf="request.status == 1">Request Status: <b>Accepted</b></span><br>
+            <span class="listItem" *ngIf="request.status == 1">Please ship the shoes to this Address: <b>{{request.client_owner.address + ", " + request.client_owner.postalCode + ", " + request.client_owner.country}}</b></span>
+            <span class="listItem" *ngIf="request.status == 2">Request Status: <b>Denied</b></span>
+            <button id="detailsButton" class="btn btn-outline-danger my-2 my-sm-0 requestButton" type="submit">Details</button>
+        </li>   
+      </ul>
+    </div>
+  </div>

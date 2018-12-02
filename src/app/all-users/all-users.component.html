@@ -1,0 +1,23 @@
+<!-- <app-navigation-component-manager></app-navigation-component-manager> -->
+<div class="sidenav">
+  <a [routerLink]="['/allUsers']">All Users</a>
+</div>
+
+<div class="main" id="shoePageBody">
+<div class="container">
+    <h2>All Users</h2>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let user of allUsers">
+            <span class="listItem">Name: {{user.firstName + " " + user.lastName}}</span>
+            <span class="userNameList">E-Mail: {{user.email}}</span>
+            
+              <span class="userNameList" *ngIf="user.isBlocked">Account Status: Blocked</span>
+            
+            
+              <span class="userNameList" *ngIf="!user.isBlocked">Account Status: Open</span>
+            
+            <button id="blockButton" class="btn btn-outline-danger my-2 my-sm-0 requestButton" type="submit" (click)="blockAccount(user)">Block Account</button>
+          </li>
+    </ul>
+  </div>
+</div>

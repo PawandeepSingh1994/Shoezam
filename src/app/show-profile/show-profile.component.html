@@ -1,0 +1,26 @@
+<div class="sidenav">
+        <a [routerLink]="['/showProfile']">Profile</a>
+        <a [routerLink]="['/editProfile']">Update Profile</a>
+        <a [routerLink]="['/editPassword']">Update Password</a>
+</div>
+              
+        <div class="main">
+                  
+        <h2>Auto Sidebar</h2>
+
+        <div class="container">
+        <div class="jumbotron">
+                <h4>User Profile Information</h4><br>
+                <div class="card" style="width: 50rem;">
+                        <div class="card-body">
+                        <p class="card-text">Firstname: {{userInfo.firstName}}</p>
+                        <p class="card-text">Lastname: {{userInfo.lastName}}</p>
+                        <p class="card-text">Phone Number: {{userInfo.phoneNumber}}</p>
+                        <p class="card-text">E-Mail: {{userInfo.email}}</p>
+                        <p class="card-text">Address: {{userInfo.address + ", " + userInfo.postalCode +", " + userInfo.country }}</p>
+                        
+                        </div>
+                </div>
+            </div>
+        </div>
+        </div>
