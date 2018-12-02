@@ -63,7 +63,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyC_pN9RJdBarHW556WQ5V-xmNru-tFF8B8'
+      apiKey: 'Your API'
     })
   ],
 
